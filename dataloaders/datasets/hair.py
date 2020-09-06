@@ -12,7 +12,7 @@ class HairDataset(Dataset):
     def __init__(self, args, split):
         self.img_dir  = args.img_dir
         self.anno_dir = args.anno_dir
-        self.split = args.split
+        self.split    = split
         with open(split + '.txt') as f:
             self.filenames = f.read().splitlines()
 
