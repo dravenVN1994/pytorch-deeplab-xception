@@ -9,11 +9,11 @@ from PIL import Image
 class HairDataset(Dataset):
 
     NUM_CLASSES = 21
-    def __init__(self, args, split_file):
+    def __init__(self, args, split):
         self.img_dir  = args.img_dir
         self.anno_dir = args.anno_dir
         self.split = args.split
-        with open(split_file + '.txt') as f:
+        with open(split + '.txt') as f:
             self.filenames = f.read().splitlines()
 
     def __len__(self):

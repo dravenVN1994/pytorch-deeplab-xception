@@ -40,7 +40,7 @@ def make_data_loader(args, **kwargs):
     elif args.dataset == 'hair':
         train_set = hair.HairDataset(args, split='train')
         val_set   = hair.HairDataset(args, split='val')
-        test_set = hair.HairDataset(args, split='test')
+        test_set  = hair.HairDataset(args, split='test')
         num_class = train_set.NUM_CLASSES
         train_loader = DataLoader(train_set, batch_size=args.batch_size, shuffle=True,  **kwargs)
         val_loader   = DataLoader(val_set,   batch_size=args.batch_size, shuffle=False, **kwargs)
