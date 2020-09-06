@@ -247,6 +247,11 @@ def main():
     parser.add_argument('--no-val', action='store_true', default=False,
                         help='skip validation during training')
 
+    parser.add_argument('--img_dir', type=str, default='/content/CelebAMask-HQ/CelebA-HQ-img',
+                        help='img_dir')
+    parser.add_argument('--anno_dir', type=str, default='/content/hair_label',
+                        help='anno_dir')
+
     args = parser.parse_args()
     args.cuda = not args.no_cuda and torch.cuda.is_available()
     if args.cuda:
