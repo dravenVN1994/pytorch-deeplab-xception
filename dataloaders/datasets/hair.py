@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import cv2
+from torchvision import transforms
 from dataloaders import custom_transforms as tr
 from torch.utils.data import Dataset
 from PIL import Image
