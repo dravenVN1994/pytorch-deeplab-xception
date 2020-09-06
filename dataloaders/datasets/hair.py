@@ -11,6 +11,7 @@ class HairDataset(Dataset):
 
     NUM_CLASSES = 21
     def __init__(self, args, split):
+        self.args     = args
         self.img_dir  = args.img_dir
         self.anno_dir = args.anno_dir
         self.split    = split
