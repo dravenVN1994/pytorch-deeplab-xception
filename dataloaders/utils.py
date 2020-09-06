@@ -27,6 +27,9 @@ def decode_segmap(label_mask, dataset, plot=False):
     elif dataset == 'cityscapes':
         n_classes = 19
         label_colours = get_cityscapes_labels()
+    elif dataset == 'hair':
+        n_classes = 2
+        label_colours = get_hair_labels()
     else:
         raise NotImplementedError
 
@@ -87,6 +90,10 @@ def get_cityscapes_labels():
         [0, 0, 230],
         [119, 11, 32]])
 
+def get_hair_labels():
+    return np.array([
+        [128, 64, 128],
+        [244, 35, 232]])
 
 def get_pascal_labels():
     """Load the mapping that associates pascal classes with label colors
