@@ -9,7 +9,7 @@ from PIL import Image
 
 class HairDataset(Dataset):
 
-    NUM_CLASSES = 21
+    NUM_CLASSES = 2
     def __init__(self, args, split):
         self.args     = args
         self.img_dir  = args.img_dir
