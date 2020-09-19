@@ -70,6 +70,13 @@ class DeepLab(nn.Module):
                         for p in m[1].parameters():
                             if p.requires_grad:
                                 yield p
+    
+    def decode(self, output):
+        output = output[0]
+        decoded_output = torch.argmax(output, dim=0)
+        decoded_output = decoded_output.type(torch.int8)
+        return decoded_output
+
 
 if __name__ == "__main__":
     model = DeepLab(backbone='mobilenet', output_stride=16)

@@ -6,7 +6,7 @@ import numpy as np
 import cv2
 from PIL import Image
 from modeling.deeplab import DeepLab
-
+import yaml
 
 
 def load_model(args):
@@ -18,6 +18,11 @@ def load_model(args):
     model.eval()
     return model
 
+def export_opnames(model):
+    ops = torch.jit.export_opnames(model)
+    with open(r"E:\Deep_Learning\projects\MobileNetV2.yaml", 'w') as output:
+        yaml.dump(ops, output)
+
 
 def main(args):
     model = load_model(args)
@@ -26,6 +31,9 @@ def main(args):
     inputs = {'forward' : X1, 'decode' : X2}
     traced_script_module = torch.jit.trace_module(model, inputs)
     traced_script_module.save(args.model_path)
+
+    loaded_model = torch.jit.load(args.model_path)
+    export_opnames(loaded_model)
 
 
 if __name__ == '__main__':
